@@ -5,7 +5,6 @@ use GuzzleHttp\Client;
 
 /**
  * Class GithubService
- * @property  githubReposUrl
  * @package App\Service
  */
 class GithubService
@@ -27,18 +26,23 @@ class GithubService
     }
 
     /**
-     * @return array
+     * @return \Illuminate\Support\Collection
      */
     public function obtainRepos()
     {
-        $res = $this->guzzle->request('GET', $this->githubReposUrl());
+        $res = $this->guzzle->request('GET', $this->githubReposUrl(),
+        [
+            "auth" => $this->credentials()
+        ]
+    );
 
-        dd($res->getBody);
-        return [
-            'repo1',
-            'repo2',
-            'repo3'
-        ];
+       //dd(\GuzzleHttp\json_decode($res->getBody));
+        return collect(\GuzzleHttp\json_decode($res->getBody()))->pluck('name');
+//        return [
+//            'repo1',
+//            'repo2',
+//            'repo3'
+//        ];
     }
 
     /**
@@ -49,6 +53,13 @@ class GithubService
         return $this->github_api_url . $this->uri;
     }
 
+    /**
+     * @return array
+     */
+    private function credentials()
+    {
+        return ['pmartinez85', $this->token];
+    }
 
 
 

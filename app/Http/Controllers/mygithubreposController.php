@@ -2,13 +2,7 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Foundation\Bus\DispatchesJobs;
-//use Illuminate\Routing\Controller as BaseController;
-//use Illuminate\Foundation\Validation\ValidatesRequests;
-//use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-
 use App\Services\GithubService;
-use Illuminate\Http\Request;
 
 /**
  * Class mygithubreposController
@@ -17,6 +11,7 @@ use Illuminate\Http\Request;
  */
 class mygithubreposController extends Controller
 {
+    protected $github;
     /**
      * mygithubreposController constructor.
      * @param GithubService $github
@@ -32,11 +27,9 @@ class mygithubreposController extends Controller
     public function index()
     {
 
-        $mygithubrepos = $this->github->obtainRepos();
+        $githubrepos = $this->github->obtainRepos();
 
-
-
-        return view('mygithubrepos', compact($mygithubrepos));
+        return view('mygithubrepos', compact('githubrepos'));
 
 
 

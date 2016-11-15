@@ -15,8 +15,8 @@
 
                     <div class="panel-body">
                         <ul>
-                        @foreach ($mygithubrepos as $repo)
-                            <li> {{$repo}} </li>
+                        @foreach ($githubrepos as $repo)
+                            <li> {{ $repo }} </li>
                             @endforeach
                         </ul>
                     </div>
