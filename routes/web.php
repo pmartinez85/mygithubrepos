@@ -19,4 +19,4 @@ Route::get('/mygithubrepos', function () {
     return view('mygithubrepos');
 });
 
-Route::get('/mygithubrepos','mugithubreposController@index');
+Route::get('/mygithubrepos','mygithubreposController@index');
