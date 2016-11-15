@@ -15,6 +15,8 @@
 
                     <div class="panel-body">
                         Hi all, I'm Xuxman and this is My GitHub repos
+                        @{{ $githubrepos }}
+
                     </div>
                 </div>
             </div>
