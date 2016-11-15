@@ -14,9 +14,11 @@
                     <div class="panel-heading">Xuxman's Github Repos</div>
 
                     <div class="panel-body">
-                        Hi all, I'm Xuxman and this is My GitHub repos
-                        @{{ $githubrepos }}
-
+                        <ul>
+                        @foreach ($mygithubrepos as $repo)
+                            <li> {{$repo}} </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>
