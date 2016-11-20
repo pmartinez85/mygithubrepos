@@ -12,7 +12,7 @@ class GithubService
     protected $token;
     protected $guzzle;
     protected $github_api_url = 'http://api.github.com';
-    protected $uri ='/user/repos';
+    protected $uri = '/user/repos';
 
 
     /**
@@ -30,13 +30,13 @@ class GithubService
      */
     public function obtainRepos()
     {
-        $res = $this->guzzle->request('GET', $this->githubReposUrl(),
-        [
-            "auth" => $this->credentials()
-        ]
-    );
+        $res = $this->guzzle->request('GET',$this->githubReposUrl(),
+            [
+                "auth" => $this->credentials(),
+            ]
+        );
 
-       //dd(\GuzzleHttp\json_decode($res->getBody));
+        //dd(($res->getBody));
         return collect(\GuzzleHttp\json_decode($res->getBody()))->pluck('name');
 //        return [
 //            'repo1',
@@ -60,8 +60,4 @@ class GithubService
     {
         return ['pmartinez85', $this->token];
     }
-
-
-
-
 }
